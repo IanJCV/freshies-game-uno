@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isAlive = true;
 
+    
 
     //move
     private bool _jump = false;
@@ -127,11 +128,29 @@ public class PlayerController : MonoBehaviour
             
         }
 
+
         if (myBodyCollider2D.IsTouchingLayers(LayerMask.GetMask("Module")))
         {
             if (inventory.modules.Count < 3)
             {
                 inventory.AddModule(collision.gameObject);
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (myBodyCollider2D.IsTouchingLayers(LayerMask.GetMask("enemyBullet")))
+        {
+            Destroy(collision.gameObject);
+            if (health > 0)
+            {
+                --health;
+            }
+            else
+            {
+                Die();
             }
         }
     }
@@ -146,7 +165,8 @@ public class PlayerController : MonoBehaviour
             myRigidBody.AddForce(new Vector3 (KnockbackDir.x * -350, KnockbackDir.y * KnockbackPwr, transform.position.z));
         }
 
-
         yield return null;
     }
+
+    
 }
