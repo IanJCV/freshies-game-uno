@@ -106,22 +106,19 @@ public class EnemyBase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Projectile")
+        {
+            Destroy(collision.gameObject);
 
-        Debug.Log("yas");
+            if (_enemyHealth > 0)
+            {
+                --_enemyHealth;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }                     
 
-
-    //        Destroy(collision.gameObject);
-
-    //        if (_enemyHealth > 0)
-    //        {
-    //            --_enemyHealth;
-    //        }
-    //        else
-    //        {
-    //            Destroy(gameObject);
-    //        }
-
-    //        Destroy(collision.gameObject);
-        
     }
 }

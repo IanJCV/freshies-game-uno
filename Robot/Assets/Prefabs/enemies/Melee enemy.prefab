@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 200
+  _enemyHealth: 5
   _attackdistance: 0
   _timeBetweenAttacks: 1
   _attacktimer: 0

@@ -63,9 +63,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && myFeetCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             _jump = true;
-        }
-
-        
+        }       
 
         _horzontalMovement = Input.GetAxis("Horizontal");
 
@@ -140,8 +138,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (myBodyCollider2D.IsTouchingLayers(LayerMask.GetMask("enemyBullet")))
+        if  (collision.gameObject.tag == "Projectile")
         {
             Destroy(collision.gameObject);
             if (health > 0)
