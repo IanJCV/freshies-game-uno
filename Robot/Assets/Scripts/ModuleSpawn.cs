@@ -23,7 +23,7 @@ public class ModuleSpawn
 
     public void Use()
     {
-        behaviour.Activate();
+        behaviour.OnPress();
     }
 
     public static Vector3 RandomPointInBounds(Bounds bounds)

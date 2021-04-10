@@ -9,8 +9,10 @@ public abstract class ModuleBehaviour : ScriptableObject
 
     public ModuleType type;
 
-    public abstract void Activate();
-    public abstract void Deactivate();
+    public abstract void OnPress();
+    public abstract void OnRelease();
+    public abstract void OnHold();
+    public abstract void Update();
 }
 
 public enum ModuleType

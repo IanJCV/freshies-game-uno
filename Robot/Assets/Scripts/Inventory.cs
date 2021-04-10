@@ -14,7 +14,6 @@ public class Inventory : MonoBehaviour
 
     const int playerLayer = 12;
 
-    // Update is called once per frame
     void Update()
     {
         ApplyInput();
@@ -52,45 +51,33 @@ public class Inventory : MonoBehaviour
         module.transform.localRotation = Quaternion.identity;
     }
 
-    private void InstantiateModule(Transform mountPoint)
-    {
-
-    }
-
     private void ApplyInput()
-    {
-        int i = GetInput();
-
-        if (i == -1)
-            return;
-
-        modules[i].Activate();
-    }
-
-    static int GetInput()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            return 0;
+            modules[1].OnPress();
         }
+        if (Input.GetKeyUp(KeyCode.Alpha1))
+        {
+            modules[1].OnRelease();
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            return 1;
+            modules[2].OnPress();
         }
+        if (Input.GetKeyUp(KeyCode.Alpha2))
+        {
+            modules[2].OnRelease();
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            return 2;
+            modules[3].OnPress();
         }
-        //if (Input.GetKeyDown(KeyCode.Alpha4))
-        //{
-        //    return 3;
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha5))
-        //{
-        //    return 4;
-        //}
-         
-        return -1;
+        if (Input.GetKeyUp(KeyCode.Alpha3))
+        {
+            modules[3].OnRelease();
+        }
     }
-
 }
