@@ -6,6 +6,7 @@ public abstract class ModuleBehaviour : ScriptableObject
 {
     public Sprite sprite;
     public int _maxDurability;
+    public GameObject parentObject;
 
     public ModuleType type;
 

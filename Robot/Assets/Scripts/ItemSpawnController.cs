@@ -16,6 +16,8 @@ public sealed class ItemSpawnController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ModuleSpawn module = new ModuleSpawn();
+
         foreach (SpawnBox box in spawnBoxes)
         {
             if (box.modulesToSpawn <= 0)
@@ -25,9 +27,7 @@ public sealed class ItemSpawnController : MonoBehaviour
             {
                 ModuleBehaviour behaviourToSpawn = behaviours[Random.Range(0, behaviours.Count)];
 
-                ModuleSpawn module = new ModuleSpawn(behaviourToSpawn, modulePrefab);
-
-                module.Spawn(box.collider.bounds);
+                module.Spawn(box.collider.bounds, behaviourToSpawn, modulePrefab);
             }
         }
     }

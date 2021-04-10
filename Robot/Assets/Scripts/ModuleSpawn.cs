@@ -4,26 +4,12 @@ using UnityEngine;
 
 public class ModuleSpawn
 {
-    private GameObject _modulePrefab;
-
-    public ModuleBehaviour behaviour;
-
-    public ModuleSpawn(ModuleBehaviour behaviour, GameObject modulePrefab)
+    public void Spawn(Bounds bounds, ModuleBehaviour behaviour, GameObject modulePrefab)
     {
-        this.behaviour = behaviour;
-        this._modulePrefab = modulePrefab;
-    }
+        GameObject prefabObject = GameObject.Instantiate(modulePrefab, RandomPointInBounds(bounds), modulePrefab.transform.rotation);
 
-    public void Spawn(Bounds bounds)
-    {
-        GameObject prefabOobject = GameObject.Instantiate(_modulePrefab, RandomPointInBounds(bounds), _modulePrefab.transform.rotation);
-
-        prefabOobject.GetComponent<ModuleObject>().behaviour = behaviour;
-    }
-
-    public void Use()
-    {
-        behaviour.OnPress();
+        prefabObject.GetComponent<ModuleObject>().behaviour = behaviour;
+        prefabObject.GetComponent<SpriteRenderer>().sprite = behaviour.sprite;
     }
 
     public static Vector3 RandomPointInBounds(Bounds bounds)

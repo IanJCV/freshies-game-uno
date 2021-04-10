@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName ="Modules/Gun")]
 public class GunModule : ModuleBehaviour
 {
     //shooting
@@ -9,7 +10,6 @@ public class GunModule : ModuleBehaviour
     private bool _fire;
     public float Timebetweenshots = 0.2f;
     public float shotTimer = 0f;
-    public Transform myGunArm;
 
     //bullettypes
     public GameObject bullet;
@@ -33,19 +33,19 @@ public class GunModule : ModuleBehaviour
     {
         if (shotTimer > Timebetweenshots && _fire)
         {
-            Instantiate(bullet, myGunArm.transform.position, myGunArm.transform.rotation * Quaternion.Euler(0, -90, 0));
+            Instantiate(bullet, parentObject.transform.position, parentObject.transform.rotation * Quaternion.Euler(0, -90, 0));
             shotTimer = 0;
         }
     }
 
     private void rotateArm()
     {
-        myGunArm.transform.LookAt(mousePosition, Vector3.right);
+        parentObject.transform.LookAt(mousePosition, Vector3.right);
     }
 
     public override void Update()
     {
-
+        shoot();
         rotateArm();
 
         shotTimer += Time.deltaTime;

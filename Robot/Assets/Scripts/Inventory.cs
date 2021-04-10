@@ -28,6 +28,10 @@ public class Inventory : MonoBehaviour
         mObj.durability = Random.Range(1, mObj.behaviour._maxDurability + 1);
         module.layer = playerLayer;
 
+        Destroy(module.GetComponent<Collider2D>());
+
+        mObj.behaviour.parentObject = module;
+
         switch (mObj.behaviour.type)
         {
             case ModuleType.Arm:
@@ -55,29 +59,29 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            modules[1].OnPress();
+            modules[0].OnPress();
         }
         if (Input.GetKeyUp(KeyCode.Alpha1))
         {
-            modules[1].OnRelease();
+            modules[0].OnRelease();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            modules[2].OnPress();
+            modules[1].OnPress();
         }
         if (Input.GetKeyUp(KeyCode.Alpha2))
         {
-            modules[2].OnRelease();
+            modules[1].OnRelease();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            modules[3].OnPress();
+            modules[2].OnPress();
         }
         if (Input.GetKeyUp(KeyCode.Alpha3))
         {
-            modules[3].OnRelease();
+            modules[2].OnRelease();
         }
     }
 }
