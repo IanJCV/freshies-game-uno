@@ -113,11 +113,9 @@ public class PlayerController : MonoBehaviour
         {
             if (health > 0)
             {
-                --health;
+                --health;             
 
-                CinemachineController.Instance.ShakeCamera(2f, 0.1f);
-
-                StartCoroutine(knockback(0.02f,100, transform.position));
+               
             }
             else
             {
@@ -159,7 +157,7 @@ public class PlayerController : MonoBehaviour
         while (knockdur > timer)
         {
             timer += Time.deltaTime;
-            myRigidBody.AddForce(new Vector3 (KnockbackDir.x * -350, KnockbackDir.y * KnockbackPwr, transform.position.z));
+            myRigidBody.AddForce(new Vector3 (KnockbackDir.x * 100, KnockbackDir.y * KnockbackPwr, transform.position.z));
         }
 
         yield return null;

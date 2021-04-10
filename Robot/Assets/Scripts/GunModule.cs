@@ -32,7 +32,8 @@ public class GunModule : ModuleBehaviour
     private void shoot()
     {
         if (shotTimer > Timebetweenshots && _fire)
-        {
+        {            
+            CinemachineController.Instance.ShakeCamera(3f, 0.1f);
             Instantiate(bullet, parentObject.transform.position, parentObject.transform.rotation * Quaternion.Euler(0, -90, 0));
             shotTimer = 0;
         }

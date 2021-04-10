@@ -18,6 +18,12 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Player")
+        {
+            StartCoroutine(collision.gameObject.GetComponent<PlayerController>().knockback(0.02f, 100, transform.position));
+            CinemachineController.Instance.ShakeCamera(4f, 0.1f);
+        }
+
         Destroy(gameObject);
     }
 }

@@ -24,6 +24,13 @@ public class EnemyBase : MonoBehaviour
     public float xAmplitude = 1;
     public float xFrequency = 1;
 
+    //Jumping
+    [SerializeField]
+    private float Jumptimer = 0;
+    [SerializeField]
+    private float timebetweenjumps = 10; 
+
+    [SerializeField] private bool _isStatic;
 
     public GameObject _player = null;
     public Transform _gunarm = null;
@@ -42,15 +49,20 @@ public class EnemyBase : MonoBehaviour
     {
         if (enemyType != EnemyType.flyingEnemy)
         {
-            if (IsFacingRight())
+            if (!_isStatic)
             {
-                myRigidBody.velocity = new Vector2(moveSpeed * Time.deltaTime, 0f);
-            }
-            else
-            {
-                myRigidBody.velocity = new Vector2(-moveSpeed * Time.deltaTime, 0f);
-            }
+                if (IsFacingRight())
+                {
+                    myRigidBody.velocity = new Vector2(moveSpeed * Time.deltaTime, 0f);
+                }
+                else
+                {
+                    myRigidBody.velocity = new Vector2(-moveSpeed * Time.deltaTime, 0f);
+                }
+            }           
         }
+
+        //Jump();
     }   
 
     public bool IsFacingRight()
@@ -66,7 +78,37 @@ public class EnemyBase : MonoBehaviour
     private void Update()
     {
         _attacktimer += Time.deltaTime;
+        Jumptimer += Time.deltaTime;
 
+        EnemyShooting();
+        FlyingMovement();
+        
+
+    }
+
+    private void Jump()
+    {
+        if (Jumptimer>timebetweenjumps && enemyType != EnemyType.flyingEnemy) 
+        {
+            timebetweenjumps = 0;            
+            StartCoroutine(Jump(50));
+        }
+    }
+
+    private void FlyingMovement()
+    {
+        if (enemyType == EnemyType.flyingEnemy)
+        {
+            float yBeat = yAmplitude * (Mathf.Sin(2 * Mathf.PI * YFrequency * Time.time));
+            float xBeat = xAmplitude * (Mathf.Sin(2 * Mathf.PI * xFrequency * Time.time));
+
+            ;
+            transform.Translate(xBeat * Time.deltaTime, yBeat * Time.deltaTime, 0);
+        }
+    }
+
+    private void EnemyShooting()
+    {
         if (enemyType == EnemyType.RangedEnemy || enemyType == EnemyType.flyingEnemy)
         {
             float distance = Vector3.Distance(_player.transform.position, transform.position);
@@ -78,17 +120,6 @@ public class EnemyBase : MonoBehaviour
                 _attacktimer = 0;
             }
         }
-
-        if (enemyType == EnemyType.flyingEnemy)
-        {
-            float yBeat = yAmplitude * (Mathf.Sin(2 * Mathf.PI * YFrequency * Time.time));
-            float xBeat = xAmplitude * (Mathf.Sin(2 * Mathf.PI * xFrequency * Time.time));
-
-            ;
-            transform.Translate(xBeat * Time.deltaTime, yBeat * Time.deltaTime, 0);
-        }
-       
-
     }
 
     public void TakeDamage()
@@ -119,6 +150,20 @@ public class EnemyBase : MonoBehaviour
                 Destroy(gameObject);
             }
         }                     
+
+    }
+
+    public IEnumerator Jump(float jumpheight)
+    {
+        _isStatic = true;
+        myRigidBody.velocity = Vector2.zero;
+        myRigidBody.AddForce(new Vector2(0, jumpheight * Time.deltaTime), ForceMode2D.Impulse);      
+
+        yield return new WaitForSeconds(5);       
+        
+        _isStatic = false;
+        yield return null;
+
 
     }
 }
