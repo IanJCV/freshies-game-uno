@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec7066accb0d984191ccb6fd8e4b0dd, type: 3}
   m_Name: Gun Module
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 1a1da36a104725048b8d2388fb8d321d, type: 3}
-  _maxDurability: 0
+  sprite: {fileID: 21300000, guid: 56baceb6f5ed01340bb9cb061ae9afd7, type: 3}
+  _maxDurability: 4
   parentObject: {fileID: 0}
-  type: 0
+  type: 1
   Timebetweenshots: 0.2
-  shotTimer: 0
+  shotTimer: 1.2455752
   bullet: {fileID: 2903923374174218595, guid: 58eccdef17df2304f95256651a15169d, type: 3}
