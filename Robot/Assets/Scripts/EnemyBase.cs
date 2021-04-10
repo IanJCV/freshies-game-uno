@@ -9,6 +9,9 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] float moveSpeed = 1f;
     Rigidbody2D myRigidBody;
 
+    [SerializeField]
+    private int _enemyHealth;
+
     //shooting
     [SerializeField] private float _attackdistance;
     [SerializeField] private float _timeBetweenAttacks = 1;
@@ -88,6 +91,37 @@ public class EnemyBase : MonoBehaviour
 
     }
 
+    public void TakeDamage()
+    {
+        if (_enemyHealth > 0)
+        {
+            --_enemyHealth;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        Debug.Log("yas");
 
 
+    //        Destroy(collision.gameObject);
+
+    //        if (_enemyHealth > 0)
+    //        {
+    //            --_enemyHealth;
+    //        }
+    //        else
+    //        {
+    //            Destroy(gameObject);
+    //        }
+
+    //        Destroy(collision.gameObject);
+        
+    }
 }
