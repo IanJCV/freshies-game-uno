@@ -35,6 +35,7 @@ public class EnemyBase : MonoBehaviour
     public GameObject _player = null;
     public Transform _gunarm = null;
     public GameObject _enemyBullet = null;
+    public AudioSource _audioSource = null;
     public enum EnemyType { flyingEnemy, RangedEnemy, MeleeEnemy}
     [SerializeField]
     EnemyType enemyType;
@@ -42,7 +43,8 @@ public class EnemyBase : MonoBehaviour
     private void Awake()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
-        _player = GameObject.FindGameObjectWithTag("Player");      
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _audioSource = GetComponent<AudioSource>();
     }   
 
     private void FixedUpdate()
@@ -117,6 +119,7 @@ public class EnemyBase : MonoBehaviour
             if (_attacktimer > _timeBetweenAttacks && distance < 10)
             {
                 Instantiate(_enemyBullet, _gunarm.transform.position, _gunarm.transform.rotation * Quaternion.Euler(0, -90, 0));
+                _audioSource.Play();
                 _attacktimer = 0;
             }
         }

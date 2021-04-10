@@ -32,6 +32,8 @@ public class Inventory : MonoBehaviour
 
         mObj.behaviour.parentObject = module;
 
+        mObj.OnAttach();
+
         switch (mObj.behaviour.type)
         {
             case ModuleType.Arm:

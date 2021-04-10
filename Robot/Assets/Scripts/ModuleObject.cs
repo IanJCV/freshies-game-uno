@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(AudioSource))]
 public class ModuleObject : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
     public ModuleBehaviour behaviour;
+    public AudioSource audioSource;
 
     public int durability;
 
-    private void Awake()
+    public void OnAttach()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
+        behaviour.source = audioSource;
+        audioSource.clip = behaviour.sound;
     }
 
 
