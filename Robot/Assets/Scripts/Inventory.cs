@@ -7,12 +7,28 @@ public class Inventory : MonoBehaviour
 {
     public List<ModuleBehaviour> modules = new List<ModuleBehaviour>();
 
+    public Transform
+        armPoint,
+        backPoint,
+        legPoint,
+        headPoint;
+
     private int slots;
 
     // Update is called once per frame
     void Update()
     {
         ApplyInput();
+    }
+
+    public void AddModule(ModuleBehaviour module)
+    {
+        modules.Add(module);
+        //switch (module.type)
+        //{
+        //    case ModuleType.Arm
+
+        //}
     }
 
     private void ApplyInput()

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4864240835636746072}
   - component: {fileID: 4864240835636746073}
   - component: {fileID: 4864240835636746086}
+  - component: {fileID: 1035257916264026917}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -51,6 +52,10 @@ MonoBehaviour:
   runSpeed: 500
   jumpSpeed: 300
   health: 10
+  Timebetweenshots: 0.2
+  shotTimer: 0
+  myGunArm: {fileID: 0}
+  bullet: {fileID: 0}
 --- !u!70 &4864240835636746087
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -133,6 +138,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1035257916264026917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864240835636746076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794e96713d7d85e42885b689a1ef2aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modules: []
+  armPoint: {fileID: 0}
+  backPoint: {fileID: 0}
+  legPoint: {fileID: 0}
+  headPoint: {fileID: 0}
 --- !u!1 &4864240835873203383
 GameObject:
   m_ObjectHideFlags: 0

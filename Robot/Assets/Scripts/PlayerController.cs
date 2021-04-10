@@ -29,10 +29,12 @@ public class PlayerController : MonoBehaviour
     Animator myAnimator;
     CapsuleCollider2D myBodyCollider2D;
     BoxCollider2D myFeetCollider2D;
+    Inventory inventory;
 
 
     void Start()
     {
+        inventory = GetComponent<Inventory>();
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
 
@@ -162,7 +164,11 @@ public class PlayerController : MonoBehaviour
 
         if (myBodyCollider2D.IsTouchingLayers(LayerMask.GetMask("Module")))
         {
-
+            if (inventory.modules.Count < 3)
+            {
+                ModuleObject moduleHit = collision.gameObject.GetComponent<ModuleObject>();
+                inventory.AddModule(moduleHit.module);
+            }
         }
     }
 

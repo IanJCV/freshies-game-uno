@@ -8,6 +8,16 @@ public abstract class ModuleBehaviour : ScriptableObject
     public int _durabilityMin;
     public int _durabilityMax;
 
+    public ModuleType type;
+
     public abstract void Activate();
     public abstract void Deactivate();
+}
+
+public enum ModuleType
+{
+    Leg,
+    Arm,
+    Head,
+    Back
 }
