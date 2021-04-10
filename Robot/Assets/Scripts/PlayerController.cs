@@ -166,8 +166,7 @@ public class PlayerController : MonoBehaviour
         {
             if (inventory.modules.Count < 3)
             {
-                ModuleObject moduleHit = collision.gameObject.GetComponent<ModuleObject>();
-                inventory.AddModule(moduleHit.module);
+                inventory.AddModule(collision.gameObject);
             }
         }
     }

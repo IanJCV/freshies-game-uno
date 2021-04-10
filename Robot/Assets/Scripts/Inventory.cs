@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +12,7 @@ public class Inventory : MonoBehaviour
         legPoint,
         headPoint;
 
-    private int slots;
+    const int playerLayer = 12;
 
     // Update is called once per frame
     void Update()
@@ -21,14 +20,41 @@ public class Inventory : MonoBehaviour
         ApplyInput();
     }
 
-    public void AddModule(ModuleBehaviour module)
+    public void AddModule(GameObject module)
     {
-        modules.Add(module);
-        //switch (module.type)
-        //{
-        //    case ModuleType.Arm
+        ModuleObject mObj = module.GetComponent<ModuleObject>();
 
-        //}
+        modules.Add(mObj.behaviour);
+
+        mObj.durability = Random.Range(1, mObj.behaviour._maxDurability + 1);
+        module.layer = playerLayer;
+
+        switch (mObj.behaviour.type)
+        {
+            case ModuleType.Arm:
+                module.transform.parent = armPoint;
+                break;
+            case ModuleType.Back:
+                module.transform.parent = backPoint;
+                break;
+            case ModuleType.Head:
+                module.transform.parent = headPoint;
+                break;
+            case ModuleType.Leg:
+                module.transform.parent = legPoint;
+                break;
+
+            default:
+                Debug.Log("Improper setup of module! Check your shit");
+                break;
+        }
+        module.transform.localPosition = Vector3.zero;
+        module.transform.localRotation = Quaternion.identity;
+    }
+
+    private void InstantiateModule(Transform mountPoint)
+    {
+
     }
 
     private void ApplyInput()
