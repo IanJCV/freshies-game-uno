@@ -59,29 +59,29 @@ public class Inventory : MonoBehaviour
 
     private void ApplyInput()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetMouseButtonDown(0))
         {
             modules[0].OnPress();
         }
-        if (Input.GetKeyUp(KeyCode.Alpha1))
+        if (Input.GetKeyUp(KeyCode.Alpha1) || Input.GetMouseButtonUp(0))
         {
             modules[0].OnRelease();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetMouseButtonDown(2))
         {
             modules[1].OnPress();
         }
-        if (Input.GetKeyUp(KeyCode.Alpha2))
+        if (Input.GetKeyUp(KeyCode.Alpha2) || Input.GetMouseButtonDown(2))
         {
             modules[1].OnRelease();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetMouseButtonDown(1))
         {
             modules[2].OnPress();
         }
-        if (Input.GetKeyUp(KeyCode.Alpha3))
+        if (Input.GetKeyUp(KeyCode.Alpha3) || Input.GetMouseButtonDown(1))
         {
             modules[2].OnRelease();
         }
