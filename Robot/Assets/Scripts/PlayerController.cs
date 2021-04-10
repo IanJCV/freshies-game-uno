@@ -102,12 +102,12 @@ public class PlayerController : MonoBehaviour
 
                 if (collision.gameObject.transform.localScale.x > 0)
                 {
-                    Vector2 knockback = new Vector2(UnityEngine.Random.Range(-3f, -5f), UnityEngine.Random.Range(-3f, 5.0f));
+                    Vector2 knockback = new Vector2(UnityEngine.Random.Range(3, 5f), UnityEngine.Random.Range(3f, 5.0f));
                     GetComponent<Rigidbody2D>().velocity += knockback * 10;
                 }
                 else
                 {
-                    Vector2 knockback = new Vector2(UnityEngine.Random.Range(3, 5f), UnityEngine.Random.Range(-3f, 5.0f));
+                    Vector2 knockback = new Vector2(UnityEngine.Random.Range(-5f, -3f), UnityEngine.Random.Range(3f, 5.0f));
                     GetComponent<Rigidbody2D>().velocity += knockback * 10;
 
                 }
