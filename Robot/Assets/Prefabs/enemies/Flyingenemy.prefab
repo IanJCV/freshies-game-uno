@@ -277,8 +277,10 @@ MonoBehaviour:
   _attackdistance: 0
   _timeBetweenAttacks: 1
   _attacktimer: 0
-  amplitude: 1
-  frequency: 1
+  yAmplitude: 1
+  YFrequency: 1
+  xAmplitude: 0.3
+  xFrequency: 5
   _player: {fileID: 0}
   _gunarm: {fileID: 1255729343128542885}
   _enemyBullet: {fileID: 2903923374174218595, guid: 35fd22a167e0fb046929279503fa719d,

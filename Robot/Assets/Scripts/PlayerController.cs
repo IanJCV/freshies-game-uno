@@ -55,11 +55,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void rotateArm()
-    {
-        Debug.Log(mousePosition);
-        myGunArm.transform.LookAt(mousePosition, Vector3.right);
-    }
+   
 
     private void InputControll()
     {
