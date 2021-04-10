@@ -25,7 +25,6 @@ public class CinemachineController : MonoBehaviour
         cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = intensity;
         shaketime = time;
 
-
     }
 
     private void Update()

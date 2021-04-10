@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -102,23 +102,7 @@ public class PlayerController : MonoBehaviour
 
                 CinemachineController.Instance.ShakeCamera(2f, 0.1f);
 
-                ////dropcomponent() ?
-                //myRigidBody.isKinematic = true;
-
-
-                //if (collision.gameObject.transform.localScale.x > 0)
-                //{
-                //    Vector2 knockback = new Vector2(UnityEngine.Random.Range(3, 5), 1);
-                //    myRigidBody.AddForce(knockback * 100, ForceMode2D.Impulse);
-                //}
-                //else
-                //{
-                //    Vector2 knockback = new Vector2(UnityEngine.Random.Range(-5, 3), 1);
-                //    myRigidBody.AddForce(knockback *100, ForceMode2D.Impulse);
-
-                //}
-
-                //myRigidBody.isKinematic = false;
+                StartCoroutine(knockback(0.02f,100, transform.position));
             }
             else
             {
@@ -126,5 +110,19 @@ public class PlayerController : MonoBehaviour
             }
             
         }
+    }
+
+    public IEnumerator knockback(float knockdur, float KnockbackPwr, Vector3 KnockbackDir)
+    {
+        float timer = 0;
+
+        while (knockdur > timer)
+        {
+            timer += Time.deltaTime;
+            myRigidBody.AddForce(new Vector3 (KnockbackDir.x * -350, KnockbackDir.y * KnockbackPwr, transform.position.z));
+        }
+
+
+        yield return null;
     }
 }
