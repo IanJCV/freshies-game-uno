@@ -19,5 +19,5 @@ MonoBehaviour:
   sound: {fileID: 8300000, guid: 731cdd9b7c3e9f042b534b58625beb6b, type: 3}
   source: {fileID: 0}
   Timebetweenshots: 0.2
-  shotTimer: 6.2623982
+  shotTimer: 6.1808677
   bullet: {fileID: 2903923374174218595, guid: 58eccdef17df2304f95256651a15169d, type: 3}
