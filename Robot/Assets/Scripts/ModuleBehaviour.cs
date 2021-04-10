@@ -5,9 +5,20 @@ using UnityEngine;
 public abstract class ModuleBehaviour : ScriptableObject
 {
     public Sprite sprite;
-    public int _durabilityMin;
-    public int _durabilityMax;
+    public int _maxDurability;
 
-    public abstract void Activate();
-    public abstract void Deactivate();
+    public ModuleType type;
+
+    public abstract void OnPress();
+    public abstract void OnRelease();
+    public abstract void OnHold();
+    public abstract void Update();
+}
+
+public enum ModuleType
+{
+    Leg,
+    Arm,
+    Head,
+    Back
 }

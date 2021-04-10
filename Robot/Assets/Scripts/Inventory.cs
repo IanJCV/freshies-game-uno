@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,48 +6,78 @@ public class Inventory : MonoBehaviour
 {
     public List<ModuleBehaviour> modules = new List<ModuleBehaviour>();
 
-    private int slots;
+    public Transform
+        armPoint,
+        backPoint,
+        legPoint,
+        headPoint;
 
-    // Update is called once per frame
+    const int playerLayer = 12;
+
     void Update()
     {
         ApplyInput();
     }
 
-    private void ApplyInput()
+    public void AddModule(GameObject module)
     {
-        int i = GetInput();
+        ModuleObject mObj = module.GetComponent<ModuleObject>();
 
-        if (i == -1)
-            return;
+        modules.Add(mObj.behaviour);
 
-        modules[i].Activate();
+        mObj.durability = Random.Range(1, mObj.behaviour._maxDurability + 1);
+        module.layer = playerLayer;
+
+        switch (mObj.behaviour.type)
+        {
+            case ModuleType.Arm:
+                module.transform.parent = armPoint;
+                break;
+            case ModuleType.Back:
+                module.transform.parent = backPoint;
+                break;
+            case ModuleType.Head:
+                module.transform.parent = headPoint;
+                break;
+            case ModuleType.Leg:
+                module.transform.parent = legPoint;
+                break;
+
+            default:
+                Debug.Log("Improper setup of module! Check your shit");
+                break;
+        }
+        module.transform.localPosition = Vector3.zero;
+        module.transform.localRotation = Quaternion.identity;
     }
 
-    static int GetInput()
+    private void ApplyInput()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            return 0;
+            modules[1].OnPress();
         }
+        if (Input.GetKeyUp(KeyCode.Alpha1))
+        {
+            modules[1].OnRelease();
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            return 1;
+            modules[2].OnPress();
         }
+        if (Input.GetKeyUp(KeyCode.Alpha2))
+        {
+            modules[2].OnRelease();
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            return 2;
+            modules[3].OnPress();
         }
-        //if (Input.GetKeyDown(KeyCode.Alpha4))
-        //{
-        //    return 3;
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha5))
-        //{
-        //    return 4;
-        //}
-         
-        return -1;
+        if (Input.GetKeyUp(KeyCode.Alpha3))
+        {
+            modules[3].OnRelease();
+        }
     }
-
 }

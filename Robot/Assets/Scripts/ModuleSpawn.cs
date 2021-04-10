@@ -18,12 +18,12 @@ public class ModuleSpawn
     {
         GameObject prefabOobject = GameObject.Instantiate(_modulePrefab, RandomPointInBounds(bounds), _modulePrefab.transform.rotation);
 
-        prefabOobject.GetComponent<ModuleObject>().module = behaviour;
+        prefabOobject.GetComponent<ModuleObject>().behaviour = behaviour;
     }
 
     public void Use()
     {
-        behaviour.Activate();
+        behaviour.OnPress();
     }
 
     public static Vector3 RandomPointInBounds(Bounds bounds)

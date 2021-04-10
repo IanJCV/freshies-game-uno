@@ -10,29 +10,23 @@ public class PlayerController : MonoBehaviour
 
     private bool isAlive = true;
 
-    //shooting
-    Vector3 mousePosition;
-    private bool _fire = true;
-    public float Timebetweenshots = 0.2f;
-    public float shotTimer = 0f;
-    public Transform myGunArm;
 
     //move
     private bool _jump = false;
     private float _horzontalMovement;
 
-    //bullettypes
-    public GameObject bullet;
 
     //this is me
     Rigidbody2D myRigidBody;
     Animator myAnimator;
     CapsuleCollider2D myBodyCollider2D;
     BoxCollider2D myFeetCollider2D;
+    Inventory inventory;
 
 
     void Start()
     {
+        inventory = GetComponent<Inventory>();
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
 
@@ -54,28 +48,16 @@ public class PlayerController : MonoBehaviour
     {
         FlipSprite();
         InputControll();
-        rotateArm();
-        shoot();
-        UpdateTimers();
-    }
 
-    private void UpdateTimers()
-    {
-        shotTimer += Time.deltaTime;
-    }
-
-    private void shoot()
-    {
-        if (shotTimer> Timebetweenshots && _fire)
+        foreach (ModuleBehaviour module in inventory.modules)
         {
-            Instantiate(bullet, myGunArm.transform.position, myGunArm.transform.rotation * Quaternion.Euler(0, -90, 0));
-            shotTimer = 0;
-        }        
+            module.Update();
+        }
     }
 
     private void rotateArm()
     {
-
+        Debug.Log(mousePosition);
         myGunArm.transform.LookAt(mousePosition, Vector3.right);
     }
 
@@ -85,22 +67,11 @@ public class PlayerController : MonoBehaviour
         {
             _jump = true;
         }
-        if (Input.GetButton("Fire1"))
-        {
-            _fire = true;
-        }
-        else
-        {
-            _fire = false;
-        }
 
         
 
         _horzontalMovement = Input.GetAxis("Horizontal");
 
-        Vector3 vector = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f);
-        mousePosition = Camera.main.ScreenToWorldPoint(vector);
-        mousePosition.z = 0f;
     }
         
 
@@ -162,7 +133,10 @@ public class PlayerController : MonoBehaviour
 
         if (myBodyCollider2D.IsTouchingLayers(LayerMask.GetMask("Module")))
         {
-
+            if (inventory.modules.Count < 3)
+            {
+                inventory.AddModule(collision.gameObject);
+            }
         }
     }
 
