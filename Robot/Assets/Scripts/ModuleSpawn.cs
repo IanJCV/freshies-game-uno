@@ -18,7 +18,7 @@ public class ModuleSpawn
     {
         GameObject prefabOobject = GameObject.Instantiate(_modulePrefab, RandomPointInBounds(bounds), _modulePrefab.transform.rotation);
 
-        prefabOobject.GetComponent<SpriteRenderer>().sprite = behaviour.sprite;
+        prefabOobject.GetComponent<ModuleObject>().module = behaviour;
     }
 
     public void Use()
