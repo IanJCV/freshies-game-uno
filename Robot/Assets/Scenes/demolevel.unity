@@ -857,8 +857,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1839245968915067824, guid: 79bab1d13e61a4f47b7fe194775cfa15,
         type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839245968915067824, guid: 79bab1d13e61a4f47b7fe194775cfa15,
+        type: 3}
       propertyPath: orthographic size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839245968915067824, guid: 79bab1d13e61a4f47b7fe194775cfa15,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.4245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839245968915067824, guid: 79bab1d13e61a4f47b7fe194775cfa15,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.40372464
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839245968915067824, guid: 79bab1d13e61a4f47b7fe194775cfa15,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.39048594
       objectReference: {fileID: 0}
     - target: {fileID: 1839245968915067825, guid: 79bab1d13e61a4f47b7fe194775cfa15,
         type: 3}

@@ -10,6 +10,9 @@ public abstract class ModuleBehaviour : ScriptableObject
 
     public ModuleType type;
 
+    public AudioClip sound;
+    public AudioSource source;
+
     public abstract void OnPress();
     public abstract void OnRelease();
     public abstract void OnHold();
