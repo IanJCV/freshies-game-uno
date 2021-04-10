@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float runSpeed = 5f;
     [SerializeField] private float jumpSpeed = 5f;
     [SerializeField] private float health = 10f;
+
     
 
     private bool isAlive = true;
@@ -35,7 +36,6 @@ public class PlayerController : MonoBehaviour
         {
             Run();            
             Jump();
-
         }
     }
 
@@ -100,17 +100,25 @@ public class PlayerController : MonoBehaviour
             {
                 --health;
 
-                if (collision.gameObject.transform.localScale.x > 0)
-                {
-                    Vector2 knockback = new Vector2(UnityEngine.Random.Range(3, 5f), UnityEngine.Random.Range(3f, 5.0f));
-                    GetComponent<Rigidbody2D>().velocity += knockback * 10;
-                }
-                else
-                {
-                    Vector2 knockback = new Vector2(UnityEngine.Random.Range(-5f, -3f), UnityEngine.Random.Range(3f, 5.0f));
-                    GetComponent<Rigidbody2D>().velocity += knockback * 10;
+                CinemachineController.Instance.ShakeCamera(2f, 0.1f);
 
-                }
+                ////dropcomponent() ?
+                //myRigidBody.isKinematic = true;
+
+
+                //if (collision.gameObject.transform.localScale.x > 0)
+                //{
+                //    Vector2 knockback = new Vector2(UnityEngine.Random.Range(3, 5), 1);
+                //    myRigidBody.AddForce(knockback * 100, ForceMode2D.Impulse);
+                //}
+                //else
+                //{
+                //    Vector2 knockback = new Vector2(UnityEngine.Random.Range(-5, 3), 1);
+                //    myRigidBody.AddForce(knockback *100, ForceMode2D.Impulse);
+
+                //}
+
+                //myRigidBody.isKinematic = false;
             }
             else
             {
