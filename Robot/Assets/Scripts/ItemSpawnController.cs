@@ -21,7 +21,7 @@ public sealed class ItemSpawnController : MonoBehaviour
             if (box.modulesToSpawn <= 0)
                 return;
 
-            for (int i = 0; i <= box.modulesToSpawn; i++)
+            for (int i = 0; i < box.modulesToSpawn; i++)
             {
                 ModuleBehaviour behaviourToSpawn = behaviours[Random.Range(0, behaviours.Count)];
 
