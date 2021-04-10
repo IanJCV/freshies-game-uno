@@ -40,7 +40,7 @@ public class GunModule : ModuleBehaviour
 
     private void rotateArm()
     {
-        parentObject.transform.LookAt(mousePosition, Vector3.right);
+        parentObject.transform.LookAt(mousePosition, Vector3.up);
     }
 
     public override void Update()
