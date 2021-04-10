@@ -39,15 +39,15 @@ public class Inventory : MonoBehaviour
         {
             return 2;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            return 3;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            return 4;
-        }
-
+        //if (Input.GetKeyDown(KeyCode.Alpha4))
+        //{
+        //    return 3;
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha5))
+        //{
+        //    return 4;
+        //}
+         
         return -1;
     }
 
