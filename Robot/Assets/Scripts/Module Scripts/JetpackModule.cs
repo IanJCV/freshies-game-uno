@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(menuName ="Modules/Jetpack")]
 public class JetpackModule : ModuleBehaviour
@@ -15,7 +16,8 @@ public class JetpackModule : ModuleBehaviour
 
     public override void OnInitialize()
     {
-        player = GameController.Instance().player;
+        player = GameController.Instance.player;
+
         player.OnJump.AddListener(Float);
     }
 

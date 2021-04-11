@@ -8,6 +8,8 @@ TagManager:
   - Projectile
   - LevelManager
   - Enemy
+  - Projectile/Bullet
+  - Projectile/Rocket
   layers:
   - Default
   - TransparentFX

@@ -104,7 +104,7 @@ public abstract class ModuleBehaviour : ScriptableObject
 
     public void RemoveItem()
     {
-        GameController.Instance().playerInventory.RemoveModule(parentObject);
+        GameController.Instance.playerInventory.RemoveModule(parentObject);
     }
 }
 

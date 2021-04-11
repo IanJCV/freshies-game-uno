@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: Gun Module
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 56baceb6f5ed01340bb9cb061ae9afd7, type: 3}
-  _maxDurability: 4
   parentObject: {fileID: 0}
+  useDurability: 0
+  maxDurability: 0
+  useHeat: 1
+  maxHeat: 10
   type: 1
   sound: {fileID: 8300000, guid: 731cdd9b7c3e9f042b534b58625beb6b, type: 3}
   source: {fileID: 0}
   Timebetweenshots: 0.2
-  shotTimer: 6.1808677
+  shotTimer: 11.135551
   bullet: {fileID: 2903923374174218595, guid: 58eccdef17df2304f95256651a15169d, type: 3}

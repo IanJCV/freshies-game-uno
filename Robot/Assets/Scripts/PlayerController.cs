@@ -40,8 +40,6 @@ public class PlayerController : MonoBehaviour
     Inventory inventory;
 
     //Events
-    public class DamageEvent : UnityEvent<int> { }
-
     public UnityEvent OnJump;
 
 
@@ -81,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
     private void ReduceHealth()
     {
-        HealthSlider.value = _playerHeathLevel / 10;
+        HealthSlider.value = 1 - (_playerHeathLevel / 10);
 
         if (_playerHeathLevel -Time.deltaTime > 0)
         {

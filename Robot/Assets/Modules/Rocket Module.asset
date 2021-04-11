@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: f8dbea1c506823843bab5021af8f87b2, type: 3}
   parentObject: {fileID: 0}
-  useDurability: 1
+  useDurability: 0
   maxDurability: 2
-  useHeat: 0
-  maxHeat: 0
-  type: 0
+  useHeat: 1
+  maxHeat: 5
+  type: 1
   sound: {fileID: 8300000, guid: 0b339220b22f2a849a92a9a477b99785, type: 3}
   source: {fileID: 0}
   rocketPrefab: {fileID: 8728757991064394293, guid: 4a152d7f7493e0c43bed43ee45c4e0fc,

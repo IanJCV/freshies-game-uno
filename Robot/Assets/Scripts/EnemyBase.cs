@@ -65,7 +65,7 @@ public class EnemyBase : MonoBehaviour
     private void Awake()
     {
         //Registers the enemy in the Game Controller
-        GameController.Instance().RegisterEnemy(this);
+        GameController.Instance.RegisterEnemy(this);
 
         myRigidBody = GetComponent<Rigidbody2D>();
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -170,24 +170,28 @@ public class EnemyBase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Projectile")
+        switch (collision.gameObject.tag)
         {
-            Destroy(collision.gameObject);
-
-            if (_enemyHealth > 1)
-            {
-                StartCoroutine(TurnRed());
-                --_enemyHealth;
+            default:
+                break;
+            case "Projectile/Bullet":
+                _enemyHealth--;
                 healthbar.SetHealth(_enemyHealth);
-            }
-            else
-            {
+                StartCoroutine(TurnRed());
+                break;
+            case "Projectile/Rocket":
                 GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
                 Destroy(explosion, 1);
                 Destroy(gameObject);
+                break;
+        }
 
-            }
-        }                     
+        if (_enemyHealth <= 0)
+        {
+            GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
+            Destroy(explosion, 1);
+            Destroy(gameObject);
+        }
 
     }
 

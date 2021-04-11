@@ -33,6 +33,7 @@ public class RocketModule : ModuleBehaviour
     {
         CinemachineController.Instance.ShakeCamera(5f, 0.2f);
         Instantiate(rocketPrefab, parentObject.transform.position, parentObject.transform.rotation * Quaternion.Euler(0, -90, 0));
+        Heat++;
         source.Play();
     }
 
