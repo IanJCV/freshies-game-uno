@@ -6726,6 +6726,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 2951275335348751885, guid: d5d88dfdcbb410d4d8f20ef58eaba360,
         type: 3}
+      propertyPath: behaviours.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d9ba137c99e36746afabbac93052d97,
+        type: 2}
+    - target: {fileID: 2951275335348751885, guid: d5d88dfdcbb410d4d8f20ef58eaba360,
+        type: 3}
       propertyPath: spawnBoxes.Array.data[0].collider
       value: 
       objectReference: {fileID: 1112898645}
@@ -7633,6 +7639,11 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 230145309940820309, guid: a2d8113e46a745041883b165d9decfe2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 346906041898523753, guid: a2d8113e46a745041883b165d9decfe2,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -7917,12 +7928,12 @@ PrefabInstance:
     - target: {fileID: 1839245968915067825, guid: 79bab1d13e61a4f47b7fe194775cfa15,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.16303
+      value: 27.659775
       objectReference: {fileID: 0}
     - target: {fileID: 1839245968915067825, guid: 79bab1d13e61a4f47b7fe194775cfa15,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.125407
+      value: 4.1298647
       objectReference: {fileID: 0}
     - target: {fileID: 1839245969032123022, guid: 79bab1d13e61a4f47b7fe194775cfa15,
         type: 3}

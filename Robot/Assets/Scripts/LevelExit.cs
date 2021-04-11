@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelExit : MonoBehaviour
 {
     [SerializeField]
-    private float _levelLoadDelay = 2f;
+    private float _levelLoadDelay = 1f;
 
     [SerializeField]
     private LevelManager _levelmanager;
@@ -16,11 +16,7 @@ public class LevelExit : MonoBehaviour
 
     IEnumerator LoadNextLevel()
     {
-        Time.timeScale = 0.2f;
-
         yield return new WaitForSecondsRealtime(_levelLoadDelay);
-
-        Time.timeScale = 1f;
 
         _levelmanager.GetComponent<LevelManager>().LoadNextLevel();
     }
