@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 300
-  jumpSpeed: 500
+  jumpSpeed: 650
   health: 10
   deathVFX: {fileID: 7614866196179621056, guid: c196986c2eae4c84e9ba3ab4838394bc,
     type: 3}
@@ -148,7 +148,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0030420125, y: -0.33552146}
