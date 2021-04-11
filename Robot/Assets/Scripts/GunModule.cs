@@ -56,4 +56,19 @@ public class GunModule : ModuleBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(vector);
         mousePosition.z = 0f;
     }
+
+    public override void OnOverheat()
+    {
+
+    }
+
+    public override void OnBreak()
+    {
+
+    }
+
+    public override void OnInitialize()
+    {
+        base.OnInitialize();
+    }
 }

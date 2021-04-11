@@ -25,7 +25,7 @@ public class Inventory : MonoBehaviour
 
         modules.Add(mObj.behaviour);
 
-        mObj.durability = Random.Range(1, mObj.behaviour._maxDurability + 1);
+        mObj.durability = Random.Range(1, mObj.behaviour.maxDurability + 1);
         module.layer = playerLayer;
 
         Destroy(module.GetComponent<Collider2D>());

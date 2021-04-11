@@ -5,7 +5,20 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Modules/Test Module")]
 public class TestModule : ModuleBehaviour
 {
+    public override void OnBreak()
+    {
+    }
+
     public override void OnHold()
+    {
+    }
+
+    public override void OnInitialize()
+    {
+        base.OnInitialize();
+    }
+
+    public override void OnOverheat()
     {
     }
 

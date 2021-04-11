@@ -14,6 +14,8 @@ public class ModuleObject : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         behaviour.source = audioSource;
         audioSource.clip = behaviour.sound;
+
+        behaviour.OnInitialize();
     }
 
 
