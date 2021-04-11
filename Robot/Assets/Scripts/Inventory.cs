@@ -1,10 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
     public List<ModuleBehaviour> modules = new List<ModuleBehaviour>();
+
+    [System.Serializable]
+    public class UIThing
+    {
+        public Slider slider;
+        public Image image;
+    }
+
+    public List<UIThing> things = new List<UIThing>();
 
     public Transform
         armPoint,
@@ -17,12 +27,29 @@ public class Inventory : MonoBehaviour
     void Update()
     {
         ApplyInput();
+        UpdateUI();
+    }
+
+    private void UpdateUI()
+    {
+        if (modules.Count == 0)
+        {
+            return;
+        }
+
+        for (int i = 0; i < modules.Count - 1; i++)
+        {
+            //things[i].slider.value = modules[i].Heat / 10;
+
+            things[i].slider.value = Random.Range(0, 2);
+        }
     }
 
     public void AddModule(GameObject module)
     {
         ModuleObject mObj = module.GetComponent<ModuleObject>();
 
+        SetUI(mObj);
         modules.Add(mObj.behaviour);
 
         mObj.durability = Random.Range(1, mObj.behaviour.maxDurability + 1);
@@ -56,11 +83,18 @@ public class Inventory : MonoBehaviour
         module.transform.localPosition = Vector3.zero;
         module.transform.localRotation = Quaternion.identity;
     }
+    private void SetUI(ModuleObject module)
+    {
+        things[modules.Count].image.sprite = module.behaviour.sprite;
+
+    }
 
     public void RemoveModule(GameObject module)
     {
+        
         ModuleBehaviour thing = module.GetComponent<ModuleObject>().behaviour;
         modules.Remove(thing);
+
     }
 
     private void ApplyInput()

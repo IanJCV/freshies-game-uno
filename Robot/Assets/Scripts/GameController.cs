@@ -11,21 +11,24 @@ public class GameController : MonoBehaviour
 
     public PlayerController player;
     public Inventory playerInventory;
-
     private static GameController _instance;
 
-    public static GameController Instance()
+    public static GameController Instance
     {
-        if (_instance == null)
+        get
         {
-            _instance = new GameController();
+            return _instance;
         }
 
-        return _instance;
+        private set
+        {
+            _instance = value;
+        }
     }
 
     private void Awake()
     {
+        Instance = this;
         mainCamera = Camera.main;
     }
 

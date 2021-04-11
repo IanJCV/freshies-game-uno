@@ -36,6 +36,7 @@ public class GunModule : ModuleBehaviour
             CinemachineController.Instance.ShakeCamera(3f, 0.1f);
             Instantiate(bullet, parentObject.transform.position, parentObject.transform.rotation * Quaternion.Euler(0, -90, 0));
             shotTimer = 0;
+            Heat++;
             source.Play();
         }
     }
@@ -59,7 +60,9 @@ public class GunModule : ModuleBehaviour
 
     public override void OnOverheat()
     {
+        Debug.Log("Broken!");
 
+        base.OnOverheat();
     }
 
     public override void OnBreak()
