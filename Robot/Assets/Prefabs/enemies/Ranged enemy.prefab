@@ -476,6 +476,8 @@ MonoBehaviour:
   _mySpriteRenderer: {fileID: 0}
   StartColor: {r: 0, g: 0, b: 0, a: 0}
   enemyType: 1
+  controller: {fileID: 8297297469101108111, guid: 45bdac35cd4f96b4da43b6013c58dd53,
+    type: 3}
 --- !u!82 &-4671856967303847907
 AudioSource:
   m_ObjectHideFlags: 0

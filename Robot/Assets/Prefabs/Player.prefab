@@ -115,7 +115,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runSpeed: 300
   jumpSpeed: 650
-  health: 10
+  _playerHeathLevel: 0
+  _playerMaxHeath: 10
+  HeathSlider: {fileID: 0}
   deathVFX: {fileID: 7614866196179621056, guid: c196986c2eae4c84e9ba3ab4838394bc,
     type: 3}
   explosionDuration: 1
