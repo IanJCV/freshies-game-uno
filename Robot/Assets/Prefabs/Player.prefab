@@ -152,8 +152,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0099333525, y: 0}
-  m_Size: {x: 0.81948113, y: 0.94}
+  m_Offset: {x: -0.0099333525, y: 0.036667347}
+  m_Size: {x: 0.81948113, y: 1.6586766}
   m_Direction: 0
 --- !u!61 &4864240835636746072
 BoxCollider2D:
@@ -168,7 +168,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0030420125, y: -0.33552146}
+  m_Offset: {x: 0.0042915344, y: -0.59955}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -179,7 +179,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.72, y: 0.3140278}
+  m_Size: {x: 0.88133574, y: 0.4020796}
   m_EdgeRadius: 0
 --- !u!50 &4864240835636746073
 Rigidbody2D:
@@ -234,6 +234,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modules: []
+  things:
+  - slider: {fileID: 0}
+    image: {fileID: 0}
+  - slider: {fileID: 0}
+    image: {fileID: 0}
+  - slider: {fileID: 0}
+    image: {fileID: 0}
   armPoint: {fileID: 1935127992477061334}
   backPoint: {fileID: 6674576790548837208}
   legPoint: {fileID: 4698244499364028215}
@@ -263,8 +270,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4864240835873203383}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.3409, y: 4.3409, z: 4.3409}
+  m_LocalPosition: {x: 0, y: 0.0298, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 4864240836389095583}
   m_Father: {fileID: 4864240835636746075}
@@ -309,7 +316,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 0400d9c70d1f80a45b60e71c9638d0be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

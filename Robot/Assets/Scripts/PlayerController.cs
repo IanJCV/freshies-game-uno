@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
     {
         GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
         Destroy(explosion, 1);
-        StartCoroutine(LoadNextLevel());
+        _levelmanager.LoadGameEnd();
         Destroy(gameObject);
         
 
