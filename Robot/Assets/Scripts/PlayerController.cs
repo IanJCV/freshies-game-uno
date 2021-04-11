@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 
 public class PlayerController : MonoBehaviour
@@ -13,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float _playerHeathLevel = 0f;
     [SerializeField] private float _playerMaxHeath = 10f;
-    public Slider HeathSlider;
+    public Slider HealthSlider;
 
     private bool isAlive = true;
 
@@ -32,13 +33,16 @@ public class PlayerController : MonoBehaviour
 
 
     //this is me
-    Rigidbody2D myRigidBody;
+    public Rigidbody2D myRigidBody;
     Animator myAnimator;
     CapsuleCollider2D myBodyCollider2D;
     BoxCollider2D myFeetCollider2D;
     Inventory inventory;
 
+    //Events
+    public class DamageEvent : UnityEvent<int> { }
 
+    public UnityEvent OnJump;
 
 
     void Start()
@@ -49,7 +53,7 @@ public class PlayerController : MonoBehaviour
         myBodyCollider2D = GetComponent<CapsuleCollider2D>();
         myFeetCollider2D = GetComponent<BoxCollider2D>();
 
-        HeathSlider.value = _playerHeathLevel;   
+        HealthSlider.value = _playerHeathLevel;   
     }
 
     // Update is called once per frame
@@ -64,10 +68,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        ReduceHeath();
+        ReduceHealth();
 
         FlipSprite();
-        InputControll();
+        InputControl();
 
         foreach (ModuleBehaviour module in inventory.modules)
         {
@@ -75,9 +79,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ReduceHeath()
+    private void ReduceHealth()
     {
-        HeathSlider.value = _playerHeathLevel / 10;
+        HealthSlider.value = _playerHeathLevel / 10;
 
         if (_playerHeathLevel -Time.deltaTime > 0)
         {
@@ -85,12 +89,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void InputControll()
+    private void InputControl()
     {
         if (Input.GetButtonDown("Jump") && myFeetCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             _jump = true;
-        }       
+        }
+        if (Input.GetButton("Jump"))
+        {
+            OnJump.Invoke();
+        }
 
         _horzontalMovement = Input.GetAxis("Horizontal");
 

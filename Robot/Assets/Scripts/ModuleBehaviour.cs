@@ -72,15 +72,40 @@ public abstract class ModuleBehaviour : ScriptableObject
     public AudioClip sound;
     public AudioSource source;
 
-    public abstract void OnInitialize();
+    public virtual void OnInitialize()
+    {
 
-    public abstract void OnPress();
-    public abstract void OnRelease();
-    public abstract void OnHold();
-    public abstract void Update();
+    }
+    public virtual void OnPress()
+    {
 
-    public abstract void OnOverheat();
-    public abstract void OnBreak();
+    }
+    public virtual void OnRelease()
+    {
+
+    }
+    public virtual void OnHold()
+    {
+
+    }
+    public virtual void Update()
+    {
+
+    }
+
+    public virtual void OnOverheat()
+    {
+        RemoveItem();
+    }
+    public virtual void OnBreak()
+    {
+        RemoveItem();
+    }
+
+    public void RemoveItem()
+    {
+        GameController.Instance().playerInventory.RemoveModule(parentObject);
+    }
 }
 
 public enum ModuleType

@@ -12,7 +12,6 @@ public class RocketModule : ModuleBehaviour
 
     public override void Update()
     {
-
         Vector3 vector = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f);
         mousePosition = Camera.main.ScreenToWorldPoint(vector);
         mousePosition.z = 0f;
@@ -23,11 +22,6 @@ public class RocketModule : ModuleBehaviour
     private void Rotate()
     {
         parentObject.transform.LookAt(mousePosition, Vector3.up);
-    }
-
-    public override void OnHold()
-    {
-
     }
 
     public override void OnPress()
@@ -42,23 +36,9 @@ public class RocketModule : ModuleBehaviour
         source.Play();
     }
 
-    public override void OnRelease()
-    {
-
-    }
-
     public override void OnBreak()
     {
 
-    }
-
-    public override void OnOverheat()
-    {
-
-    }
-
-    public override void OnInitialize()
-    {
-
+        base.OnBreak();
     }
 }
