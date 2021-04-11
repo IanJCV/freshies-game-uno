@@ -1345,7 +1345,7 @@ GameObject:
   - component: {fileID: 2025972430784374093}
   - component: {fileID: 4118938672621757977}
   m_Layer: 5
-  m_Name: Image
+  m_Name: HeathMeterPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1458,7 +1458,7 @@ GameObject:
   - component: {fileID: 6524174871817256252}
   - component: {fileID: 8840438264576964898}
   m_Layer: 5
-  m_Name: Slider (1)
+  m_Name: PlayerHeath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -11,6 +11,11 @@ public class EnemyBase : MonoBehaviour
 
     [SerializeField]
     private int _enemyHealth;
+    [SerializeField]
+    private int _maxEnemyHealth = 10;
+
+    [SerializeField]
+    public EnemyHealthBar healthbar;
 
 
     //shooting
@@ -65,6 +70,8 @@ public class EnemyBase : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _mySpriteRenderer = GetComponent<SpriteRenderer>();
         StartColor = _mySpriteRenderer.color;
+        _enemyHealth = _maxEnemyHealth;
+        healthbar.SetMaxHealth(_maxEnemyHealth);
     }   
 
     private void FixedUpdate()
@@ -94,7 +101,8 @@ public class EnemyBase : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        transform.localScale = new Vector2(-(Mathf.Sign(myRigidBody.velocity.x)), 1f);
+        if (collision.gameObject.tag != "Projectile")
+            transform.localScale = new Vector2(-(Mathf.Sign(myRigidBody.velocity.x)), 1f);
     }
 
     private void Update()
@@ -166,16 +174,18 @@ public class EnemyBase : MonoBehaviour
         {
             Destroy(collision.gameObject);
 
-            if (_enemyHealth > 0)
+            if (_enemyHealth > 1)
             {
                 StartCoroutine(TurnRed());
                 --_enemyHealth;
+                healthbar.SetHealth(_enemyHealth);
             }
             else
             {
                 GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
                 Destroy(explosion, 1);
                 Destroy(gameObject);
+
             }
         }                     
 
