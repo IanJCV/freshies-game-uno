@@ -57,6 +57,12 @@ public class Inventory : MonoBehaviour
         module.transform.localRotation = Quaternion.identity;
     }
 
+    public void RemoveModule(GameObject module)
+    {
+        ModuleBehaviour thing = module.GetComponent<ModuleObject>().behaviour;
+        modules.Remove(thing);
+    }
+
     private void ApplyInput()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetMouseButtonDown(0))
