@@ -15,7 +15,7 @@ public class TestModule : ModuleBehaviour
 
     public override void OnInitialize()
     {
-        base.OnInitialize();
+
     }
 
     public override void OnOverheat()
