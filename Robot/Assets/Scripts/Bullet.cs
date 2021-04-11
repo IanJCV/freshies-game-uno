@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [Range(0.0f, 15.0f)]
     public int speed = 5;
     void Start()
     {

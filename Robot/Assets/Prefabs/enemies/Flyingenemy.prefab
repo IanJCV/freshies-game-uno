@@ -142,7 +142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5318845599762759784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.49, y: 4.15, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1255729343128542885}
@@ -276,8 +276,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 200
   _enemyHealth: 5
-  _attackdistance: 0
-  _timeBetweenAttacks: 1
+  _attackdistance: 8
+  _timeBetweenAttacks: 3
   _attacktimer: 0
   yAmplitude: 1
   YFrequency: 1
@@ -285,11 +285,17 @@ MonoBehaviour:
   xFrequency: 0.3
   Jumptimer: 0
   timebetweenjumps: 10
-  _isStatic: 0
+  _CantMove: 0
+  deathVFX: {fileID: 7614866196179621056, guid: c196986c2eae4c84e9ba3ab4838394bc,
+    type: 3}
+  explosionDuration: 1
   _player: {fileID: 0}
   _gunarm: {fileID: 1255729343128542885}
   _enemyBullet: {fileID: 2903923374174218595, guid: 35fd22a167e0fb046929279503fa719d,
     type: 3}
+  _audioSource: {fileID: 0}
+  _mySpriteRenderer: {fileID: 0}
+  StartColor: {r: 0, g: 0, b: 0, a: 0}
   enemyType: 0
 --- !u!82 &4014465106166898117
 AudioSource:

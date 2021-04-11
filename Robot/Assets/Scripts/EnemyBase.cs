@@ -12,30 +12,48 @@ public class EnemyBase : MonoBehaviour
     [SerializeField]
     private int _enemyHealth;
 
+
     //shooting
+    [Header("shooting, only ranged and flying")]
+    [Range(0.0f, 15.0f)]
     [SerializeField] private float _attackdistance;
+    [Range(0.0f, 3f)]
     [SerializeField] private float _timeBetweenAttacks = 1;
     [SerializeField] private float _attacktimer = 0;
 
     //flying
+    [Header("Flying Variables")]
+    [Range(0.0f, 10.0f)]
     public float yAmplitude = 1;
+    [Range(0.0f, 10.0f)]
     public float YFrequency = 1;
 
+    [Range(0.0f, 10.0f)]
     public float xAmplitude = 1;
+    [Range(0.0f, 10.0f)]
     public float xFrequency = 1;
 
     //Jumping
     [SerializeField]
     private float Jumptimer = 0;
     [SerializeField]
-    private float timebetweenjumps = 10; 
+    private float timebetweenjumps = 10;
 
-    [SerializeField] private bool _isStatic;
+    [Header("make character stand still (ranged elee)")]
+    [SerializeField] private bool _CantMove;
+
+
+    [Header("other shit")]
+    [SerializeField] public GameObject deathVFX;
+    [SerializeField] private float explosionDuration = 1;
 
     public GameObject _player = null;
     public Transform _gunarm = null;
     public GameObject _enemyBullet = null;
     public AudioSource _audioSource = null;
+    public SpriteRenderer _mySpriteRenderer;
+
+    public Color StartColor;
     public enum EnemyType { flyingEnemy, RangedEnemy, MeleeEnemy}
     [SerializeField]
     EnemyType enemyType;
@@ -45,13 +63,15 @@ public class EnemyBase : MonoBehaviour
         myRigidBody = GetComponent<Rigidbody2D>();
         _player = GameObject.FindGameObjectWithTag("Player");
         _audioSource = GetComponent<AudioSource>();
+        _mySpriteRenderer = GetComponent<SpriteRenderer>();
+        StartColor = _mySpriteRenderer.color;
     }   
 
     private void FixedUpdate()
     {
         if (enemyType != EnemyType.flyingEnemy)
         {
-            if (!_isStatic)
+            if (!_CantMove)
             {
                 if (IsFacingRight())
                 {
@@ -88,14 +108,14 @@ public class EnemyBase : MonoBehaviour
 
     }
 
-    private void Jump()
-    {
-        if (Jumptimer>timebetweenjumps && enemyType != EnemyType.flyingEnemy) 
-        {
-            timebetweenjumps = 0;            
-            StartCoroutine(Jump(50));
-        }
-    }
+    //private void Jump()
+    //{
+    //    if (Jumptimer>timebetweenjumps && enemyType != EnemyType.flyingEnemy) 
+    //    {
+    //        timebetweenjumps = 0;            
+    //        StartCoroutine(Jump(50));
+    //    }
+    //}
 
     private void FlyingMovement()
     {
@@ -125,18 +145,20 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    public void TakeDamage()
-    {
-        if (_enemyHealth > 0)
-        {
-            --_enemyHealth;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+    //public void TakeDamage()
+    //{
+    //    if (_enemyHealth > 0)
+    //    {
+    //        --_enemyHealth;
+    //    }
+    //    else
+    //    {                       
+    //        GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
+    //        Destroy(explosion, 10);
+            
+    //    }
 
-    }
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -146,27 +168,39 @@ public class EnemyBase : MonoBehaviour
 
             if (_enemyHealth > 0)
             {
+                StartCoroutine(TurnRed());
                 --_enemyHealth;
             }
             else
             {
+                GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
+                Destroy(explosion, 1);
                 Destroy(gameObject);
             }
         }                     
 
     }
 
-    public IEnumerator Jump(float jumpheight)
+    //public IEnumerator Jump(float jumpheight)
+    //{
+    //    _CantMove = true;
+    //    myRigidBody.velocity = Vector2.zero;
+    //    myRigidBody.AddForce(new Vector2(0, jumpheight * Time.deltaTime), ForceMode2D.Impulse);      
+
+    //    yield return new WaitForSeconds(5);       
+
+    //    _CantMove = false;
+    //    yield return null;
+
+
+    //}
+    public IEnumerator TurnRed()
     {
-        _isStatic = true;
-        myRigidBody.velocity = Vector2.zero;
-        myRigidBody.AddForce(new Vector2(0, jumpheight * Time.deltaTime), ForceMode2D.Impulse);      
+        _mySpriteRenderer.color = Color.red;
 
-        yield return new WaitForSeconds(5);       
-        
-        _isStatic = false;
-        yield return null;
-
-
+        yield return new WaitForSeconds(0.1f);
+        Debug.Log("afterroutine");
+        _mySpriteRenderer.color = StartColor;
     }
+
 }

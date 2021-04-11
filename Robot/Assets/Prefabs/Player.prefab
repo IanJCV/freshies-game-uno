@@ -116,6 +116,12 @@ MonoBehaviour:
   runSpeed: 300
   jumpSpeed: 500
   health: 10
+  deathVFX: {fileID: 7614866196179621056, guid: c196986c2eae4c84e9ba3ab4838394bc,
+    type: 3}
+  explosionDuration: 1
+  _levelLoadDelay: 2
+  _levelmanager: {fileID: 3223773900606719615, guid: 3dd615b609241c444b97efc44fb20fa2,
+    type: 3}
 --- !u!70 &4864240835636746087
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

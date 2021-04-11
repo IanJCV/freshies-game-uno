@@ -10,7 +10,14 @@ public class PlayerController : MonoBehaviour
 
     private bool isAlive = true;
 
-    
+    [SerializeField] public GameObject deathVFX;
+    [SerializeField] private float explosionDuration = 1;
+
+    //levelshit if die
+    [SerializeField]
+    private float _levelLoadDelay = 2f;
+    [SerializeField]
+    private LevelManager _levelmanager;
 
     //move
     private bool _jump = false;
@@ -72,10 +79,12 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        Vector2 explosion = new Vector2(UnityEngine.Random.Range(0.0f, 10.0f), UnityEngine.Random.Range(0.0f, 10.0f));
+        GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
+        Destroy(explosion, 1);
+        StartCoroutine(LoadNextLevel());
+        Destroy(gameObject);
+        
 
-        GetComponent<Rigidbody2D>().velocity = explosion;
-        isAlive = false;
     }
 
     private void Jump()
@@ -111,17 +120,8 @@ public class PlayerController : MonoBehaviour
     {
         if (myBodyCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemy"))) //other types of dmg, spikes etc
         {
-            if (health > 0)
-            {
-                --health;         
+            TakeDamage();
 
-               
-            }
-            else
-            {
-                Die();
-            }
-            
         }
 
 
@@ -134,34 +134,50 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void TakeDamage()
+    {
+        if (health > 0)
+        {
+            --health;
+        }
+        else
+        {
+            Die();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if  (collision.gameObject.tag == "Projectile")
         {
             Destroy(collision.gameObject);
-            if (health > 0)
-            {
-                --health;
-            }
-            else
-            {
-                Die();
-            }
+            TakeDamage();
         }
     }
 
-    public IEnumerator knockback(float knockdur, float KnockbackPwr, Vector3 KnockbackDir)
+    //public IEnumerator knockback(float knockdur, float KnockbackPwr, Vector3 KnockbackDir)
+    //{
+    //    float timer = 0;
+
+    //    while (knockdur > timer)
+    //    {
+    //        timer += Time.deltaTime;
+    //        myRigidBody.AddForce(new Vector3 (KnockbackDir.x * 100, KnockbackDir.y * KnockbackPwr, transform.position.z));
+    //    }
+
+    //    yield return null;
+    //}
+
+    IEnumerator LoadNextLevel()
     {
-        float timer = 0;
+        Time.timeScale = 0.2f;
 
-        while (knockdur > timer)
-        {
-            timer += Time.deltaTime;
-            myRigidBody.AddForce(new Vector3 (KnockbackDir.x * 100, KnockbackDir.y * KnockbackPwr, transform.position.z));
-        }
+        yield return new WaitForSecondsRealtime(_levelLoadDelay);
 
-        yield return null;
+        Time.timeScale = 1f;
+
+        _levelmanager.GetComponent<LevelManager>().LoadNextLevel();
     }
 
-    
+
 }
