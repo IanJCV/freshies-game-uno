@@ -69,6 +69,6 @@ public class GunModule : ModuleBehaviour
 
     public override void OnInitialize()
     {
-        base.OnInitialize();
+
     }
 }
