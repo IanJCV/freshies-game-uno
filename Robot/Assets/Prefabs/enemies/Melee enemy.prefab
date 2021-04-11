@@ -406,7 +406,7 @@ MonoBehaviour:
   xAmplitude: 1
   xFrequency: 1
   Jumptimer: 0
-  timebetweenjumps: 10
+  timebetweenjumps: 12
   _CantMove: 0
   deathVFX: {fileID: 7614866196179621056, guid: c196986c2eae4c84e9ba3ab4838394bc,
     type: 3}
@@ -418,8 +418,6 @@ MonoBehaviour:
   _mySpriteRenderer: {fileID: 0}
   StartColor: {r: 0, g: 0, b: 0, a: 0}
   enemyType: 2
-  controller: {fileID: 8297297469101108111, guid: 45bdac35cd4f96b4da43b6013c58dd53,
-    type: 3}
 --- !u!82 &-2111075538226601079
 AudioSource:
   m_ObjectHideFlags: 0

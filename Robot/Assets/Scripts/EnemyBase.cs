@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 
 public class EnemyBase : MonoBehaviour
@@ -15,12 +15,11 @@ public class EnemyBase : MonoBehaviour
     private int _maxEnemyHealth = 10;
 
     [SerializeField]
-    public EnemyHealthBar healthbar;
-
+    public EnemyHealthBar healthbar;  
 
     //shooting
     [Header("shooting, only ranged and flying")]
-    [Range(0.0f, 15.0f)]
+    [Range(0.0f, 20.0f)]
     [SerializeField] private float _attackdistance;
     [Range(0.0f, 3f)]
     [SerializeField] private float _timeBetweenAttacks = 1;
@@ -85,11 +84,11 @@ public class EnemyBase : MonoBehaviour
             {
                 if (IsFacingRight())
                 {
-                    myRigidBody.velocity = new Vector2(moveSpeed * Time.deltaTime, 0f);
+                    myRigidBody.velocity = new Vector2(moveSpeed * Time.deltaTime, 0f);                    
                 }
                 else
                 {
-                    myRigidBody.velocity = new Vector2(-moveSpeed * Time.deltaTime, 0f);
+                    myRigidBody.velocity = new Vector2(-moveSpeed * Time.deltaTime, 0f);                    
                 }
             }           
         }
@@ -99,13 +98,13 @@ public class EnemyBase : MonoBehaviour
 
     public bool IsFacingRight()
     {
-        return transform.localScale.x > 0;
+        return transform.localScale.x > 0;        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag != "Projectile")
-            transform.localScale = new Vector2(-(Mathf.Sign(myRigidBody.velocity.x)), 1f);
+            transform.localScale = new Vector2(-(Mathf.Sign(myRigidBody.velocity.x)), 1f);       
     }
 
     private void Update()
@@ -114,9 +113,7 @@ public class EnemyBase : MonoBehaviour
         Jumptimer += Time.deltaTime;
 
         EnemyShooting();
-        FlyingMovement();
-        
-
+        FlyingMovement();      
     }
 
     //private void Jump()

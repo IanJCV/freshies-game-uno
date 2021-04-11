@@ -626,7 +626,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 200
   _enemyHealth: 5
-  _maxEnemyHealth: 10
+  _maxEnemyHealth: 4
+  MyHealthBarCanvas: {fileID: 0}
   healthbar: {fileID: 6077415336812515694}
   _attackdistance: 8
   _timeBetweenAttacks: 1.2
@@ -649,8 +650,6 @@ MonoBehaviour:
   _mySpriteRenderer: {fileID: 0}
   StartColor: {r: 0, g: 0, b: 0, a: 0}
   enemyType: 0
-  controller: {fileID: 8297297469101108111, guid: 45bdac35cd4f96b4da43b6013c58dd53,
-    type: 3}
 --- !u!82 &4014465106166898117
 AudioSource:
   m_ObjectHideFlags: 0
