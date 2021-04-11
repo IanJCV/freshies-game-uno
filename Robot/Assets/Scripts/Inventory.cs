@@ -39,9 +39,7 @@ public class Inventory : MonoBehaviour
 
         for (int i = 0; i < modules.Count - 1; i++)
         {
-            //things[i].slider.value = modules[i].Heat / 10;
-
-            things[i].slider.value = Random.Range(0, 2);
+            things[i].slider.value = modules[i].Heat / 10;
         }
     }
 

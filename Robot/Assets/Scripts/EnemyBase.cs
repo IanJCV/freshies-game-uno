@@ -70,7 +70,6 @@ public class EnemyBase : MonoBehaviour
         myRigidBody = GetComponent<Rigidbody2D>();
         _player = GameObject.FindGameObjectWithTag("Player");
         _audioSource = GetComponent<AudioSource>();
-        _mySpriteRenderer = GetComponent<SpriteRenderer>();
         StartColor = _mySpriteRenderer.color;
         _enemyHealth = _maxEnemyHealth;
         healthbar.SetMaxHealth(_maxEnemyHealth);

@@ -60,7 +60,6 @@ public class GunModule : ModuleBehaviour
 
     public override void OnOverheat()
     {
-        Debug.Log("Broken!");
 
         base.OnOverheat();
     }

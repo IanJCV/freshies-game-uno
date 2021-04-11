@@ -17,9 +17,9 @@ MonoBehaviour:
   useDurability: 0
   maxDurability: 0
   useHeat: 1
-  maxHeat: 50
+  maxHeat: 1000
   type: 3
   sound: {fileID: 0}
   source: {fileID: 0}
-  strength: 10
+  strength: 2
   player: {fileID: 0}
