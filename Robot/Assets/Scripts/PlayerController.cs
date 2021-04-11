@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float runSpeed = 5f;
     [SerializeField] private float jumpSpeed = 5f;
-    [SerializeField] private float health = 10f;
+
+
+    [SerializeField] private float _playerHeathLevel = 0f;
+    [SerializeField] private float _playerMaxHeath = 10f;
+    public Slider HeathSlider;
 
     private bool isAlive = true;
 
@@ -32,14 +38,17 @@ public class PlayerController : MonoBehaviour
     Inventory inventory;
 
 
+
+
     void Start()
     {
         inventory = GetComponent<Inventory>();
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-
         myBodyCollider2D = GetComponent<CapsuleCollider2D>();
         myFeetCollider2D = GetComponent<BoxCollider2D>();
+
+        HeathSlider.value = _playerHeathLevel;   
     }
 
     // Update is called once per frame
@@ -54,6 +63,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        ReduceHeath();
+
         FlipSprite();
         InputControll();
 
@@ -63,7 +74,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-   
+    private void ReduceHeath()
+    {
+        HeathSlider.value = _playerHeathLevel / 10;
+
+        if (_playerHeathLevel -Time.deltaTime > 0)
+        {
+            _playerHeathLevel -= Time.deltaTime;
+        }
+    }
 
     private void InputControll()
     {
@@ -136,9 +155,9 @@ public class PlayerController : MonoBehaviour
 
     private void TakeDamage()
     {
-        if (health > 0)
+        if (_playerHeathLevel < _playerMaxHeath)
         {
-            --health;
+            ++_playerHeathLevel;
         }
         else
         {
