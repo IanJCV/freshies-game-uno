@@ -58,8 +58,14 @@ public class EnemyBase : MonoBehaviour
     [SerializeField]
     EnemyType enemyType;
 
+    [SerializeField]
+    GameController controller;
+
     private void Awake()
     {
+        //Registers the enemy in the Game Controller
+        controller.RegisterEnemy(this);
+
         myRigidBody = GetComponent<Rigidbody2D>();
         _player = GameObject.FindGameObjectWithTag("Player");
         _audioSource = GetComponent<AudioSource>();

@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: -2111075538226601079}
   m_Layer: 9
   m_Name: Melee enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -212,6 +212,7 @@ MonoBehaviour:
   _enemyBullet: {fileID: 0}
   _audioSource: {fileID: 0}
   _mySpriteRenderer: {fileID: 0}
+  StartColor: {r: 0, g: 0, b: 0, a: 0}
   enemyType: 2
 --- !u!82 &-2111075538226601079
 AudioSource:
